@@ -6,8 +6,8 @@
         <div class="col-12">
           <card class="card-plain">
             <template slot="header">
-              <h4 class="card-title">Table on Plain Background</h4>
-              <p class="card-category">Here is a subtitle for this table</p>
+              <h4 class="card-title">The Data</h4>
+              <p class="card-category">The underlying dataset used is available here in tabular format. Granularity can be adjusted by filtering and sorting the data as needed.</p>
             </template>
             <l-table ref="myTable"
                      class="table-responsive"
