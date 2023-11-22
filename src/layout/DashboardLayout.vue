@@ -8,7 +8,7 @@
       </sidebar-link>
       <sidebar-link to="/admin/geographic-distribution">
         <i class="nc-icon nc-map-big"></i>
-        <p>Geographic Distribution</p>
+        <p>Geo Distribution</p>
       </sidebar-link>
       <sidebar-link to="/admin/trends-over-time">
         <i class="nc-icon nc-watch-time"></i>

@@ -1,5 +1,5 @@
 <template>
-  <ul class="nav nav-mobile-menu">
+  <ul class="nav nav-mobile-menu" style="display:none;">
     <base-dropdown>
       <template slot="title">
         <i class="fa fa-globe"></i>
