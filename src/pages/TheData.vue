@@ -30,7 +30,7 @@
   import 'datatables.net/js/jquery.dataTables';
   import tableData from 'src/assets/data/tabledata.json';
 
-  const tableColumns = ['country', 'year', 'malaria case count', 'malaria death count', 'gdp per capita']
+  const tableColumns = ['country', 'year', 'malaria case count', 'malaria death count', 'gdp per capita (usd)']
 
   export default {
     components: {

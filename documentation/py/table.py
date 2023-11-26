@@ -13,7 +13,7 @@ def export_tabledata():
                             'Year': 'year',
                             'No. of cases_median': 'malaria case count',
                             'No. of deaths_median': 'malaria death count',
-                            'GDP_per_capita': 'gdp per capita'})
+                            'GDP_per_capita': 'gdp per capita (usd)'})
     
     df.to_json('../../src/assets/data/tabledata.json', orient='records')
 
