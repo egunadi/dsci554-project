@@ -11,10 +11,13 @@ import Overview from 'src/pages/Overview.vue'
 import UserProfile from 'src/pages/UserProfile.vue'
 import TableList from 'src/pages/TableList.vue'
 import Typography from 'src/pages/Typography.vue'
+import Map1 from 'src/pages/map1.vue';
+import Map2 from 'src/pages/map2.vue';
 import Icons from 'src/pages/Icons.vue'
 import Maps from 'src/pages/Maps.vue'
 import Notifications from 'src/pages/Notifications.vue'
 import Upgrade from 'src/pages/Upgrade.vue'
+
 
 const routes = [
   {
@@ -68,6 +71,16 @@ const routes = [
         component: Typography
       },
       {
+        path: '/map1',
+        name: 'Map1',
+        component: Map1
+      },
+      {
+        path: '/map2',
+        name: 'Map2',
+        component: Map2
+      },
+      {
         path: 'icons',
         name: 'Icons',
         component: Icons
@@ -82,6 +95,7 @@ const routes = [
         name: 'Notifications',
         component: Notifications
       },
+      
       {
         path: 'upgrade',
         name: 'Upgrade to PRO',
