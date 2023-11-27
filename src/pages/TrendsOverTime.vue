@@ -257,8 +257,9 @@ export default {
             // Add the Y Axis with the grid lines
             svg.append("g")
                 .attr("class", "grid")
+                .style("stroke-dasharray", "3,3")
                 .call(yAxis);
-                
+
             // Add X-axis label
             svg.append("text")
                 .attr("transform", `translate(${width / 2}, ${height + margin.bottom - 5})`)
@@ -315,7 +316,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 body {
     margin: 0;
     display: flex;
@@ -388,7 +389,6 @@ h1 {
 
 .grid path {
     stroke-width: 0;
-    /* removes the axis line */
 }
 
 @media (min-width: 768px) {
