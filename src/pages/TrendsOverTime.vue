@@ -258,6 +258,7 @@ export default {
             svg.append("g")
                 .attr("class", "grid")
                 .style("stroke-dasharray", "3,3")
+                .style("stroke-width", "0.5px")
                 .call(yAxis);
 
             // Add X-axis label
