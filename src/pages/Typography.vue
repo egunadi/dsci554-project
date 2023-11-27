@@ -1,80 +1,21 @@
-<template>
+<!-- <template>
   <div class="content">
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
+        
           <card>
             <template slot="header">
-              <h4 class="card-title">Light Bootstrap Table Heading</h4>
-              <p class="card-category">Created using Roboto Font Family</p>
+              <h4 class="card-title" @click.native="window.open('html/map1.html')">
+                Malaria Cases vs Deaths
+              </h4>
             </template>
             <div class="typo-line">
-              <h1><p class="category">Header 1</p>Light Bootstrap Table Heading </h1>
-            </div>
-
-            <div class="typo-line">
-              <h2><p class="category">Header 2</p>Light Bootstrap Table Heading</h2>
+              <img id="image1" src="../assets/img/map1.jpg" alt="Description of image" @click="handleImageClick('image1')">
             </div>
             <div class="typo-line">
-              <h3><p class="category">Header 3</p>Light Bootstrap Table Heading</h3>
-            </div>
-            <div class="typo-line">
-              <h4><p class="category">Header 4</p>Light Bootstrap Table Heading</h4>
-            </div>
-            <div class="typo-line">
-              <h5><p class="category">Header 5</p>Light Bootstrap Table Heading</h5>
-            </div>
-            <div class="typo-line">
-              <h6><p class="category">Header 6</p>Light Bootstrap Table Heading</h6>
-            </div>
-            <div class="typo-line">
-              <p><span class="category">Paragraph</span>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam.
-              </p>
-            </div>
-            <div class="typo-line">
-              <p class="category">Quote</p>
-              <blockquote>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam.
-                </p>
-                <small>
-                  Steve Jobs, CEO Apple
-                </small>
-              </blockquote>
-            </div>
-
-            <div class="typo-line">
-              <p class="category">Muted Text</p>
-              <p class="text-muted">
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet.
-              </p>
-            </div>
-            <div class="typo-line">
-              <!--
-               there are also "text-info", "text-success", "text-warning", "text-danger" clases for the text
-               -->
-              <p class="category">Coloured Text</p>
-              <p class="text-primary">
-                Text Primary - Light Bootstrap Table Heading and complex bootstrap dashboard you've ever seen on the internet.
-              </p>
-              <p class="text-info">
-                Text Info - Light Bootstrap Table Heading and complex bootstrap dashboard you've ever seen on the internet.
-              </p>
-              <p class="text-success">
-                Text Success - Light Bootstrap Table Heading and complex bootstrap dashboard you've ever seen on the internet.
-              </p>
-              <p class="text-warning">
-                Text Warning - Light Bootstrap Table Heading and complex bootstrap dashboard you've ever seen on the internet.
-              </p>
-              <p class="text-danger">
-                Text Danger - Light Bootstrap Table Heading and complex bootstrap dashboard you've ever seen on the internet.
-              </p>
-            </div>
-
-            <div class="typo-line">
-              <h2><p class="category">Small Tag</p>Header with small subtitle <br>
-                <small>".small" is a tag for the headers</small>
-              </h2>
+              <h4 @click="handleImageClick('image2')">GDP of top 10 Malaria ridden Countries</h4>
+              <img id="image2" src="../assets/img/map2.jpg" alt="Description of image" @click="handleImageClick('image2')">
             </div>
           </card>
         </div>
@@ -86,13 +27,78 @@
 <script>
   import Card from 'src/components/Cards/Card.vue'
 
+
+export default {
+  components: {
+    Card
+  },
+  methods: {
+    handleImageClick(imageId) {
+      console.log("Image clicked:", imageId);
+      if(imageId === 'image1') {
+        // Logic for when the first image is clicked
+        window.open('/Users/shreyanshmac/Documents/DSCI 554 Data Viz/assignments/vue dashboard/proj-sankeyou/src/pages/html/map1.html');
+      } else if(imageId === 'image2') {
+        // Logic for when the second image is clicked
+        window.open('html/map2.html');
+      }
+    }
+  }
+}
+
+
+</script>
+<style>
+#image1 {
+  width: 70%;
+  height: auto;
+}
+#image2 {
+  width: 70%;
+  height: auto;
+}
+</style> -->
+<template>
+  <div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <card>
+            <template slot="header">
+              <h4 class="card-title">
+                <router-link to="/map1">Malaria Cases vs Deaths</router-link>
+              </h4>
+            </template>
+            <div class="typo-line">
+              <img id="image1" src="../assets/img/map1.jpg" alt="Description of image">
+            </div>
+
+            <div class="typo-line">
+              <h4>
+                <router-link to="/map2">GDP of top 10 Malaria ridden Countries</router-link>
+              </h4>
+              <img id="image2" src="../assets/img/map2.jpg" alt="Description of image">
+            </div>
+          </card>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+  import Card from 'src/components/Cards/Card.vue';
+
   export default {
     components: {
       Card
     }
-  }
-
+  };
 </script>
-<style>
 
+<style>
+#image1, #image2 {
+  width: 70%;
+  height: auto;
+}
 </style>
