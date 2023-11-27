@@ -82,7 +82,7 @@
     }
   }
 </script>
-<style>
+<style scoped>
 tfoot input {
   width: 100%;
   padding: 3px;
