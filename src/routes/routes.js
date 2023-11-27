@@ -30,7 +30,7 @@ const routes = [
       {
         path: 'correlations',
         name: 'Overview',
-        component: Overview
+        component: Correlations
       },
       {
         path: 'geographic-distribution',
