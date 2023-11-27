@@ -119,7 +119,7 @@ export default {
             const colorScale = d3.scaleOrdinal(d3.schemeTableau10).domain(countries);
 
             const legendContainer = d3.select("#legend-container");
-            const parentWidth = legendContainer.node().getBoundingClientRect().width; 
+            const parentWidth = legendContainer.node().getBoundingClientRect().width;
             const legendSvg = legendContainer.append("svg")
                 .attr("width", parentWidth)
                 .attr("height", 70);
@@ -175,7 +175,7 @@ export default {
                 lines.style("display", "none");
             } else {
                 // If checked, set it to "block"
-                lines.style("display", "block"); 
+                lines.style("display", "block");
             }
         },
         drawLineChart(data, attribute, chartId) {
@@ -249,6 +249,16 @@ export default {
             // Add the Y Axis
             svg.append("g").call(d3.axisLeft(yScale));
 
+            // Define the Y-axis with horizontal grid lines
+            const yAxis = d3.axisLeft(yScale)
+                .tickSize(-width) // this will extend the ticks (grid lines) across the width of the chart
+                .tickFormat(''); // no text for the grid lines
+
+            // Add the Y Axis with the grid lines
+            svg.append("g")
+                .attr("class", "grid")
+                .call(yAxis);
+                
             // Add X-axis label
             svg.append("text")
                 .attr("transform", `translate(${width / 2}, ${height + margin.bottom - 5})`)
@@ -366,6 +376,19 @@ h1 {
     border-radius: 4px;
     pointer-events: none;
     opacity: 0;
+}
+
+.grid line {
+    stroke: lightgrey;
+    stroke-opacity: 0.7;
+    shape-rendering: crispEdges;
+    stroke-dasharray: 3, 3;
+    /* creates the dotted effect */
+}
+
+.grid path {
+    stroke-width: 0;
+    /* removes the axis line */
 }
 
 @media (min-width: 768px) {
