@@ -4,7 +4,7 @@
       <mobile-menu slot="content"></mobile-menu>
       <sidebar-link to="/admin/correlations">
         <i class="nc-icon nc-bank"></i>
-        <p>Overview</p>
+        <p>Correlations</p>
       </sidebar-link>
       <sidebar-link to="/admin/geographic-distribution">
         <i class="nc-icon nc-map-big"></i>

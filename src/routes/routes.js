@@ -32,7 +32,7 @@ const routes = [
     children: [
       {
         path: 'correlations',
-        name: 'Overview',
+        name: 'Correlations',
         component: Correlations
       },
       {
