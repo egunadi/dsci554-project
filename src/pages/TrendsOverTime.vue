@@ -154,21 +154,22 @@ export default {
                     .attr("fill", colorScale(country))
                     .attr("y", 2.5);
 
+                const className = `line-${country.split(' ').join('-')}`;
                 // Checkbox input
                 legendItem.append("input")
                     .attr("type", "checkbox")
-                    .attr("id", `checkbox-${country}`)
+                    .attr("id", `checkbox-${className}`)
                     .attr("checked", true);
 
                 // Checkbox label
                 legendItem.append("label")
-                    .attr("for", `checkbox-${country}`)
+                    .attr("for", `checkbox-${className}`)
                     .text(country)
                     .style("margin-left", "5px")
                     .style("margin-bottom", "0px");
 
                 // Checkbox event
-                d3.select(`#checkbox-${country}`).on("change", () => {
+                d3.select(`#checkbox-${className}`).on("change", () => {
                     this.handleCheckboxChange(country, event.target.checked);
                 });
             });
