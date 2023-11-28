@@ -1,6 +1,9 @@
 <template>
 <div>
-    <div id="legend-container"></div>
+    <div id="legend-container" class="row">
+        <!-- Add 'row' class here -->
+        <!-- Legend items will be dynamically inserted here -->
+    </div>
     <div class="charts-container">
         <div class="chart-container">
             <h2>Malaria Number of Cases Time Series Visualizations</h2>
@@ -73,6 +76,14 @@ export default {
     },
     mounted() {
         this.loadChartData();
+
+        // Add a resize event listener
+        this.resizeEventHandler = () => this.updateChartSizes();
+        window.addEventListener('resize', this.resizeEventHandler);
+    },
+    beforeDestroy() {
+        // Remove the resize event listener
+        window.removeEventListener('resize', this.resizeEventHandler);
     },
     methods: {
         loadChartData() {
@@ -97,6 +108,13 @@ export default {
             this.drawLineChart(tableData, "No. of deaths", "deaths-chart");
             this.createLegend();
         },
+        updateChartSizes() {
+            // Method to update chart sizes
+            this.drawLineChart(tableData, "Population", "population-chart");
+            this.drawLineChart(tableData, "No. of cases", "cases-chart");
+            this.drawLineChart(tableData, "GDP_per_capita", "gdp-chart");
+            this.drawLineChart(tableData, "No. of deaths", "deaths-chart");
+        },
         calculatePercentageChange(data, attribute) {
             data.sort((a, b) => a.Year - b.Year);
             for (let i = 1; i < data.length; i++) {
@@ -119,45 +137,38 @@ export default {
             const colorScale = d3.scaleOrdinal(d3.schemeTableau10).domain(countries);
 
             const legendContainer = d3.select("#legend-container");
-            const parentWidth = legendContainer.node().getBoundingClientRect().width;
-            const legendSvg = legendContainer.append("svg")
-                .attr("width", parentWidth)
-                .attr("height", 70);
 
-            countries.forEach((country, index) => {
-                const xPosition = (index % 5) * 250;
-                const yPosition = Math.floor(index / 5) * 30;
-
-                const legendItem = legendSvg.append("g")
-                    .attr("transform", `translate(${xPosition}, ${yPosition})`);
+            countries.forEach((country) => {
+                const legendItem = legendContainer.append("div")
+                    .attr("class", "legend-item d-inline-flex align-items-center")
+                    .style("margin-left", "10px")
+                    .style("margin-right", "10px"); // Inline-flex for content-based sizing
 
                 // Colored rectangle for the legend
-                legendItem.append("rect")
+                legendItem.append("svg")
+                    .attr("width", 20)
+                    .attr("height", 20)
+                    .append("rect")
                     .attr("width", 15)
                     .attr("height", 15)
                     .attr("fill", colorScale(country))
-                    .attr("y", 8);
+                    .attr("y", 2.5);
 
-                const className = `line-${country.split(' ').join('-')}`;
                 // Checkbox input
-                legendItem.append("foreignObject")
-                    .attr("width", 20)
-                    .attr("height", 20)
-                    .attr("x", 20) // Adjust x position to be next to the colored rectangle
-                    .attr("y", 5)
-                    .append("xhtml:body")
-                    .html(`<form><input type="checkbox" id="checkbox-${className}" checked></form>`);
+                legendItem.append("input")
+                    .attr("type", "checkbox")
+                    .attr("id", `checkbox-${country}`)
+                    .attr("checked", true);
 
                 // Checkbox label
-                legendItem.append("text")
-                    .attr("x", 45) // Adjust x position to be next to the checkbox
-                    .attr("y", 22)
+                legendItem.append("label")
+                    .attr("for", `checkbox-${country}`)
                     .text(country)
-                    .attr("font-size", "13px")
-                    .attr("text-anchor", "start");
+                    .style("margin-left", "5px")
+                    .style("margin-bottom", "0px");
 
-                // Use an arrow function to maintain the correct 'this' scope
-                d3.select(`#checkbox-${className}`).on("change", () => {
+                // Checkbox event
+                d3.select(`#checkbox-${country}`).on("change", () => {
                     this.handleCheckboxChange(country, event.target.checked);
                 });
             });
@@ -180,7 +191,8 @@ export default {
         },
         drawLineChart(data, attribute, chartId) {
             const countries = ["Nigeria", "Democratic Republic of the Congo", "India", "Mozambique", "Uganda", "Burkina Faso", "Ghana", "Niger", "Mali", "Cameroon"];
-            console.log(data)
+            
+            d3.select(`#${chartId} svg`).remove();
             const colorScale = d3.scaleOrdinal(d3.schemeTableau10).domain(countries);
             let allYears = new Set();
             let processedData = [];
@@ -326,34 +338,46 @@ body {
     font-family: Arial, sans-serif;
 }
 
-h1 {
-    text-align: center;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    font-size: 24px;
-}
-
 #legend-container {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     width: 100%;
-    margin: 0 auto;
-    margin-left: 30px;
+    margin-bottom: 20px;
+}
+.legend-item {
+    display: flex;
+    align-items: center; /* Align items vertically in the center */
+    margin: 5px;
+    padding: 5px;
+    background: #f8f9fa;
+    border-radius: 4px;
 }
 
-#legend-container input[type="checkbox"] {
+.legend-item svg {
+    display: block; /* Ensure SVG aligns correctly */
+}
+
+.legend-item input[type="checkbox"] {
     cursor: pointer;
+    margin-right: 5px; /* Add some space between checkbox and label */
+}
+
+.legend-item label {
+    margin: 0; /* Remove default margin */
+    line-height: 1; /* Adjust line height to match checkbox height */
 }
 
 .charts-container {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    /* Larger size for wider screens */
+    gap: 10px;
     justify-content: center;
     margin-top: 20px;
 }
 
 .chart-container {
-    flex-basis: 100%;
     margin: 10px;
     align-items: center;
     border: 1px solid #ccc;
@@ -364,6 +388,35 @@ h1 {
 .chart {
     width: 100%;
     height: 300px;
+}
+
+/* Media query for mobile screens */
+@media (max-width: 767px) {
+    .charts-container {
+        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+        /* Full width on smaller screens */
+    }
+
+    .legend-item {
+        flex-basis: calc(50% - 10px);
+        /* 2 columns for mobile */
+    }
+}
+
+/* Media query for iPad screens */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .legend-item {
+        flex-basis: calc(20% - 10px);
+        /* 5 columns for iPads */
+    }
+}
+
+/* Media query for larger screens */
+@media (min-width: 1025px) {
+    .legend-item {
+        flex-basis: calc(10% - 10px);
+        /* 10 columns for larger screens */
+    }
 }
 
 .tooltip {
@@ -385,16 +438,9 @@ h1 {
     stroke-opacity: 0.7;
     shape-rendering: crispEdges;
     stroke-dasharray: 3, 3;
-    /* creates the dotted effect */
 }
 
 .grid path {
     stroke-width: 0;
-}
-
-@media (min-width: 768px) {
-    .chart-container {
-        flex-basis: calc(50% - 20px);
-    }
 }
 </style>
