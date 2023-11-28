@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Correlation between Malaria Infection Rates and GDP per Capita</a>
+      <a class="navbar-brand d-lg-inline-block text-truncate" href="#">Correlation between Malaria Infection Rates and GDP per Capita</a>
       <button type="button"
               class="navbar-toggler navbar-toggler-right"
               :class="{toggled: $sidebar.showSidebar}"
