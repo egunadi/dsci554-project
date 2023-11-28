@@ -24,6 +24,9 @@ import LightBootstrap from "./light-bootstrap-main";
 import routes from "./routes/routes";
 
 import "./registerServiceWorker";
+
+import './assets/css/global.css'; // Import the global CSS file
+
 // plugin setup
 Vue.use(VueRouter);
 Vue.use(LightBootstrap);
