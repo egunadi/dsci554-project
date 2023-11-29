@@ -4,7 +4,7 @@
 
 > Team "Sankeyou" - Melissa Perkins, Shreyansh Ajaykumar Khandelwal, Kaushik Golithadka, and Eben Gunadi
 
-[ASSIGNMENT.md](ASSIGNMENT.md) contains the Rubric
+[ASSIGNMENT.md](ASSIGNMENT.md) contains the Rubric.
 
 Check the [Live Demo here](https://egunadi.github.io/dsci554-project).
 
