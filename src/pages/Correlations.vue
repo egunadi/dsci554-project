@@ -175,11 +175,17 @@ export default {
                     .attr("text-anchor", "middle")
                     .style("font-size", "16px")
                     .text(data[0].country);
-            }
+            };
+            if (containerId.startsWith("main-scatter")&& this.selectedOption === "Top 10 Countries")  {
 
+            const countries = ["Nigeria", "Democratic Republic of the Congo", "India", "Mozambique", "Uganda", "Burkina Faso", "Ghana", "Niger", "Mali", "Cameroon"];
+            var color = d3.scaleOrdinal(d3.schemeTableau10).domain(countries);
+
+            }
+            else{
             var color = d3.scaleOrdinal()
                 .domain(data.map(function(d) { return d.country; }))
-                .range(d3.schemeCategory10);
+                .range(d3.schemeCategory10);}
                 
             var tooltip = d3.select("#" + containerId)
               .append("div")
