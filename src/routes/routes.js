@@ -4,7 +4,7 @@ import NotFound from '../pages/NotFoundPage.vue'
 
 // Admin pages
 import Correlations from 'src/pages/Correlations.vue'
-import ScatterMatrix from 'src/pages/ScatterMatrix.vue'
+import ScatterMatrix from 'src/pages/CorrelationMatrix.vue'
 import GeographicDistribution from 'src/pages/GeographicDistribution.vue'
 import TrendsOverTime from 'src/pages/TrendsOverTime.vue'
 import TheData from 'src/pages/TheData.vue'
