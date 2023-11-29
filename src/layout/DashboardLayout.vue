@@ -6,6 +6,10 @@
         <i class="nc-icon nc-bank"></i>
         <p>Correlations</p>
       </sidebar-link>
+      <sidebar-link to="/admin/correlation-matrix">
+        <i class="nc-icon nc-grid-45"></i>
+        <p>Correlation Matrix</p>
+      </sidebar-link>
       <sidebar-link to="/admin/geographic-distribution">
         <i class="nc-icon nc-map-big"></i>
         <p>Geo Distribution</p>

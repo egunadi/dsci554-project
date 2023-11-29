@@ -4,6 +4,7 @@ import NotFound from '../pages/NotFoundPage.vue'
 
 // Admin pages
 import Correlations from 'src/pages/Correlations.vue'
+import ScatterMatrix from 'src/pages/ScatterMatrix.vue'
 import GeographicDistribution from 'src/pages/GeographicDistribution.vue'
 import TrendsOverTime from 'src/pages/TrendsOverTime.vue'
 import TheData from 'src/pages/TheData.vue'
@@ -34,6 +35,11 @@ const routes = [
         path: 'correlations',
         name: 'Correlations',
         component: Correlations
+      },
+      {
+        path: 'correlation-matrix',
+        name: 'Correlation Matrix',
+        component: CorrelationMatrix
       },
       {
         path: 'geographic-distribution',
