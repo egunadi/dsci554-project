@@ -31,6 +31,12 @@
       <input type="radio" v-model="selectedOption" value="All Countries" @change="updateMainScatter"> All Countries
     </label>
     <label>
+      <input type="radio" v-model="selectedOption" value="Countries with Malaria Cases" @change="updateMainScatter"> Countries with Malaria Cases
+    </label>
+    <label>
+      <input type="radio" v-model="selectedOption" value="Countries with Malaria Cases- no zero" @change="updateMainScatter"> Countries with Malaria Cases (excluding all zeros)
+    </label>
+    <label>
       <input type="radio" v-model="selectedOption" value="Top 10 Countries" @change="updateMainScatter"> Top 10 Countries
     </label>
   </div>
@@ -55,6 +61,10 @@
   import ChartCard from 'src/components/Cards/ChartCard.vue';
   import * as d3 from 'd3';
   import scatterData from 'src/assets/data/scatter_all_countries.json';
+  import scatterDataOverZero from 'src/assets/data/scatter_mal_over_zero.json';
+  import scatterDataWithZero from 'src/assets/data/scatter_mal_with_zero.json';
+
+
 
 export default {
   components: {
@@ -85,7 +95,9 @@ export default {
     },
     methods: {
       loadData() {
-        this.dataAll = scatterData;      
+        this.dataAll = scatterData;   
+        this.dataMAL = scatterDataOverZero;   
+        this.dataMALzero = scatterDataWithZero; 
         if (this.dataAll) {
       this.updateMainScatter(); 
       this.createSmallScatterPlots();
@@ -97,10 +109,13 @@ export default {
     mainScatterContainer.selectAll("*").remove();
     if (this.selectedOption === "All Countries") {
       this.createScatterPlot("main-scatter", this.dataAll, 700, 600);
+      } else if (this.selectedOption === "Countries with Malaria Cases") {
+      this.createScatterPlot("main-scatter", this.dataMALzero, 700, 600);
+    } else if (this.selectedOption === "Countries with Malaria Cases- no zero") {
+      this.createScatterPlot("main-scatter", this.dataMAL, 700, 600);
     } else if (this.selectedOption === "Top 10 Countries") {
       // Filter data to get only the top 10 countries
       var top10Data = this.dataAll.filter(d => this.top10.includes(d.country));
-
       // Update the main scatter plot to show only the top 10 countries
       this.createScatterPlot("main-scatter", top10Data, 700, 600);
     }
@@ -260,6 +275,7 @@ body {
             box-sizing: border-box;
             position: relative;
             z-index: 1;
+            border: 1px solid #ccc;
         }
 
         .scatter-container {

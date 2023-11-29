@@ -1,0 +1,182 @@
+[
+  {
+    "x": "malaria_cases",
+    "y": "malaria_cases",
+    "value": 1.0
+  },
+  {
+    "x": "malaria_cases",
+    "y": "malaria_death",
+    "value": 0.9705319850423328
+  },
+  {
+    "x": "malaria_cases",
+    "y": "gdp_per_cap",
+    "value": -0.17717663214864512
+  },
+  {
+    "x": "malaria_cases",
+    "y": "gov_consumption",
+    "value": -0.0242750616750399
+  },
+  {
+    "x": "malaria_cases",
+    "y": "exports",
+    "value": -0.0331740076663722
+  },
+  {
+    "x": "malaria_cases",
+    "y": "imports",
+    "value": -0.03428400692174276
+  },
+  {
+    "x": "malaria_death",
+    "y": "malaria_cases",
+    "value": 0.9705319850423328
+  },
+  {
+    "x": "malaria_death",
+    "y": "malaria_death",
+    "value": 1.0
+  },
+  {
+    "x": "malaria_death",
+    "y": "gdp_per_cap",
+    "value": -0.19960089582169066
+  },
+  {
+    "x": "malaria_death",
+    "y": "gov_consumption",
+    "value": -0.034989365311105254
+  },
+  {
+    "x": "malaria_death",
+    "y": "exports",
+    "value": -0.04169667145631157
+  },
+  {
+    "x": "malaria_death",
+    "y": "imports",
+    "value": -0.042885318393074925
+  },
+  {
+    "x": "gdp_per_cap",
+    "y": "malaria_cases",
+    "value": -0.17717663214864512
+  },
+  {
+    "x": "gdp_per_cap",
+    "y": "malaria_death",
+    "value": -0.19960089582169066
+  },
+  {
+    "x": "gdp_per_cap",
+    "y": "gdp_per_cap",
+    "value": 1.0
+  },
+  {
+    "x": "gdp_per_cap",
+    "y": "gov_consumption",
+    "value": -0.011608788102411399
+  },
+  {
+    "x": "gdp_per_cap",
+    "y": "exports",
+    "value": -0.024552336531859516
+  },
+  {
+    "x": "gdp_per_cap",
+    "y": "imports",
+    "value": -0.026866160703130432
+  },
+  {
+    "x": "gov_consumption",
+    "y": "malaria_cases",
+    "value": -0.0242750616750399
+  },
+  {
+    "x": "gov_consumption",
+    "y": "malaria_death",
+    "value": -0.034989365311105254
+  },
+  {
+    "x": "gov_consumption",
+    "y": "gdp_per_cap",
+    "value": -0.011608788102411399
+  },
+  {
+    "x": "gov_consumption",
+    "y": "gov_consumption",
+    "value": 1.0
+  },
+  {
+    "x": "gov_consumption",
+    "y": "exports",
+    "value": 0.8628039381660888
+  },
+  {
+    "x": "gov_consumption",
+    "y": "imports",
+    "value": 0.8648231002490414
+  },
+  {
+    "x": "exports",
+    "y": "malaria_cases",
+    "value": -0.0331740076663722
+  },
+  {
+    "x": "exports",
+    "y": "malaria_death",
+    "value": -0.04169667145631157
+  },
+  {
+    "x": "exports",
+    "y": "gdp_per_cap",
+    "value": -0.024552336531859516
+  },
+  {
+    "x": "exports",
+    "y": "gov_consumption",
+    "value": 0.8628039381660888
+  },
+  {
+    "x": "exports",
+    "y": "exports",
+    "value": 1.0
+  },
+  {
+    "x": "exports",
+    "y": "imports",
+    "value": 0.9991470672191959
+  },
+  {
+    "x": "imports",
+    "y": "malaria_cases",
+    "value": -0.03428400692174276
+  },
+  {
+    "x": "imports",
+    "y": "malaria_death",
+    "value": -0.042885318393074925
+  },
+  {
+    "x": "imports",
+    "y": "gdp_per_cap",
+    "value": -0.026866160703130432
+  },
+  {
+    "x": "imports",
+    "y": "gov_consumption",
+    "value": 0.8648231002490414
+  },
+  {
+    "x": "imports",
+    "y": "exports",
+    "value": 0.9991470672191959
+  },
+  {
+    "x": "imports",
+    "y": "imports",
+    "value": 1.0
+  }
+]
