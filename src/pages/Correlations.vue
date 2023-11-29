@@ -147,7 +147,7 @@ export default {
             svg.append("text")
                 .attr("transform", `translate(${width / 2}, ${height + margin.bottom - 5})`)
                 .style("text-anchor", "middle")
-                .text("GDP per Capita");
+                .text("GDP per Capita (USD)");
 
             // Add Y-axis label
             svg.append("text")
