@@ -37,5 +37,7 @@ Our Overleaf report contains the project's implementation details.
 
 ### build for production with minification
 
-`export NODE_OPTIONS=--openssl-legacy-provider`
-`npm run build`
+```
+export NODE_OPTIONS=--openssl-legacy-provider
+npm run build
+```
