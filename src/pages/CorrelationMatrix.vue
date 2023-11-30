@@ -9,6 +9,15 @@
     <button @click="switchMatrix('top10')" :class="matrixType === 'top10' ? 'active' : ''">Show Top 10</button>
     </div>
     <div class= "matrix" id="scatter-matrix"></div>
+
+    <div class="variable-names">
+        <div>Number of Malaria Cases: malaria_cases</div>
+        <div>Number of Malaria Related Deaths: malaria_death</div>
+        <div>GDP per Capita (USD): gdp_per_capita</div>
+        <div>General Government Final Consumption Expenditure: gov_consumption</div>
+        <div>Exports of Goods and Services: exports</div>
+        <div>Imports of Goods and Services: imports</div>
+      </div>
     
 </div>
 
@@ -161,4 +170,8 @@ CreateScatterMatrix(containerID, jsonData) {
     background-color: #444; /* Dark grey for the active button */
     color: #fff;
   }
+
+.variable-names {
+  margin-left: 20px; /* Adjust as needed */
+}
 </style>

@@ -191,6 +191,30 @@ export default {
                     .style("font-size", "16px")
                     .text(data[0].country);
             };
+               
+            //Color Palette from https://waldyrious.net/viridis-palette-generator/
+            var hexColorArray = [
+                '#fde725', '#f8e621', '#f1e51d', '#eae51a', '#e2e418',
+                '#dae319', '#d2e21b', '#cde11d', '#c5e021', '#bddf26',
+                '#b5de2b', '#addc30', '#a5db36', '#a0da39', '#98d83e',
+                '#90d743', '#89d548', '#81d34d', '#7ad151', '#73d056',
+                '#6ece58', '#67cc5c', '#60ca60', '#5ac864', '#54c568',
+                '#4ec36b', '#4ac16d', '#44bf70', '#3fbc73', '#3aba76',
+                '#35b779', '#31b57b', '#2db27d', '#2ab07f', '#27ad81',
+                '#25ab82', '#22a884', '#21a585', '#1fa287', '#1fa188',
+                '#1f9e89', '#1e9b8a', '#1f988b', '#1f958b', '#20928c',
+                '#21918c', '#218e8d', '#228b8d', '#23888e', '#25858e',
+                '#26828e', '#27808e', '#277e8e', '#297b8e', '#2a788e',
+                '#2b758e', '#2c728e', '#2d708e', '#2e6e8e', '#2f6b8e',
+                '#31688e', '#32658e', '#33628d', '#355f8d', '#365c8d',
+                '#375a8c', '#39568c', '#3a538b', '#3c508b', '#3d4d8a',
+                '#3e4989', '#3f4788', '#414487', '#424086', '#433d84',
+                '#443983', '#453581', '#46327e', '#472f7d', '#472c7a',
+                '#482878', '#482475', '#482071', '#481c6e', '#481a6c',
+                '#481668', '#471164', '#470d60', '#46085c', '#450457'
+            ];
+
+
             if (containerId.startsWith("main-scatter")&& this.selectedOption === "Top 10 Countries")  {
 
             const countries = ["Nigeria", "Democratic Republic of the Congo", "India", "Mozambique", "Uganda", "Burkina Faso", "Ghana", "Niger", "Mali", "Cameroon"];
@@ -200,7 +224,7 @@ export default {
             else{
             var color = d3.scaleOrdinal()
                 .domain(data.map(function(d) { return d.country; }))
-                .range(d3.schemeCategory10);}
+                .range(hexColorArray);}
                 
             var tooltip = d3.select("#" + containerId)
               .append("div")

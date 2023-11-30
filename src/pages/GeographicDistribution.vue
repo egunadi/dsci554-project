@@ -66,7 +66,7 @@ export default {
           <card>
             <template slot="header">
               <h4 class="card-title">
-                <router-link to="/map1">Malaria Cases vs Deaths</router-link>
+                <router-link to="/map1">Top 10 Malaria-Affected Countries: Malaria Cases vs Death</router-link>
               </h4>
             </template>
             <div class="typo-line">
@@ -75,7 +75,7 @@ export default {
 
             <div class="typo-line">
               <h4>
-                <router-link to="/map2">GDP of top 10 Malaria ridden Countries</router-link>
+                <router-link to="/map2">Top 10 Malaria-Affected Countries: GDP per Capita</router-link>
               </h4>
               <img id="image2" src="../assets/img/map2.jpg" alt="Description of image">
             </div>
