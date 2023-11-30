@@ -212,7 +212,7 @@ export default {
                 '#443983', '#453581', '#46327e', '#472f7d', '#472c7a',
                 '#482878', '#482475', '#482071', '#481c6e', '#481a6c',
                 '#481668', '#471164', '#470d60', '#46085c', '#450457'
-            ];
+            ].reverse();
 
 
             if (containerId.startsWith("main-scatter")&& this.selectedOption === "Top 10 Countries")  {
