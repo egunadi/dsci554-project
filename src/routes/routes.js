@@ -24,12 +24,12 @@ const routes = [
   {
     path: '/',
     component: DashboardLayout,
-    redirect: '/admin/correlations'
+    redirect: '/admin/geographic-distribution'
   },
   {
     path: '/admin',
     component: DashboardLayout,
-    redirect: '/admin/correlations',
+    redirect: '/admin/geographic-distribution',
     children: [
       {
         path: 'correlations',
