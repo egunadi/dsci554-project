@@ -14,18 +14,17 @@
   pointer-events: none;
   opacity: 0;
 }
+.scatter-plot-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start
+        }
 </style>
 
 
 <template>
 
 <div>
-  <div class="correlation-box">
-      <p>Correlation Coefficient:</p>
-      <p class="coefficient-value">{{ correlationCoefficient }}</p>
-    </div>
-  <div class="main" id="main-scatter"></div>
-
   <div class="radio-buttons">
     <label>
       <input type="radio" v-model="selectedOption" value="All Countries" @change="updateMainScatter"> All Countries
@@ -40,6 +39,16 @@
       <input type="radio" v-model="selectedOption" value="Top 10 Countries" @change="updateMainScatter"> Top 10 Countries
     </label>
   </div>
+  <div class="scatter-plot-container">
+  <div class="main" id="main-scatter"></div>
+  <div class="correlation-box">
+      <p>Correlation Coefficient:</p>
+      <p class="coefficient-value">{{ correlationCoefficient }}</p>
+    </div>
+
+  </div>
+  <div class="divider"></div>
+
   <div class="scatter-container">
     <div class="small-scatter" id="small-scatter-1"></div>
     <div class="small-scatter" id="small-scatter-2"></div>
@@ -108,16 +117,16 @@ export default {
     var mainScatterContainer = d3.select("#main-scatter");
     mainScatterContainer.selectAll("*").remove();
     if (this.selectedOption === "All Countries") {
-      this.createScatterPlot("main-scatter", this.dataAll, 700, 600);
+      this.createScatterPlot("main-scatter", this.dataAll, 850, 700);
       } else if (this.selectedOption === "Countries with Malaria Cases") {
-      this.createScatterPlot("main-scatter", this.dataMALzero, 700, 600);
+      this.createScatterPlot("main-scatter", this.dataMALzero, 850, 700);
     } else if (this.selectedOption === "Countries with Malaria Cases- no zero") {
-      this.createScatterPlot("main-scatter", this.dataMAL, 700, 600);
+      this.createScatterPlot("main-scatter", this.dataMAL, 850, 700);
     } else if (this.selectedOption === "Top 10 Countries") {
       // Filter data to get only the top 10 countries
       var top10Data = this.dataAll.filter(d => this.top10.includes(d.country));
       // Update the main scatter plot to show only the top 10 countries
-      this.createScatterPlot("main-scatter", top10Data, 700, 600);
+      this.createScatterPlot("main-scatter", top10Data, 850, 700);
     }
   },
 
@@ -125,14 +134,14 @@ export default {
         // Create small scatter plots for each country in top10
         this.top10.forEach((country, index) => {
           const countryData = this.dataAll.filter(d => d.country === country);
-          this.createScatterPlot(`small-scatter-${index + 1}`, countryData, 450, 350);
+          this.createScatterPlot(`small-scatter-${index + 1}`, countryData, 325, 250);
           this.smallScatterData.push(countryData);
         });
       },
 
       createScatterPlot(containerId, data, const_width, const_height) {
           var container = d3.select("#" + containerId);
-          var margin = {top: 90, right: 30, bottom: 50, left: 100},
+          var margin = {top: 45, right: 30, bottom: 50, left: 100},
           width = const_width - margin.left - margin.right,
           height = const_height - margin.top - margin.bottom;
           var svg = container
@@ -176,17 +185,19 @@ export default {
             // Add title
             var title = "Malaria Cases vs GDP per Capita";
 
+            if (containerId.startsWith("main-scatter")) {
             svg.append("text")
                 .attr("x", width / 2)
                 .attr("y", -margin.top+20)
                 .attr("text-anchor", "middle")
                 .style("font-size", "16px")
                 .text(title);
+              };
 
             if (containerId.startsWith("small-scatter-")) {
                 svg.append("text")
                     .attr("x", width / 2)
-                    .attr("y", -margin.top + 45)
+                    .attr("y", -margin.top + 15)
                     .attr("text-anchor", "middle")
                     .style("font-size", "16px")
                     .text(data[0].country);
@@ -293,7 +304,7 @@ body {
             font-family: Arial, sans-serif;
         }
         .main {
-            width: 800px;
+            width: 900px;
             margin: 10px;
             padding: 10px;
             box-sizing: border-box;
@@ -304,47 +315,57 @@ body {
 
         .scatter-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 10px;
             justify-content: center;
             align-items: center;
         }
 
         .small-scatter {
-            width: 100%;
+            width: calc(100% - 50px);
             margin: 10px;
+            margin-right: 1px;
             display: flex;
             flex-wrap: wrap;
             border: 1px solid #ccc;
-            padding: 10px;
+            padding: 2px;
             box-sizing: border-box;
             position: relative;
             z-index: 1;
         }
 
         .radio-buttons {
-          margin-top: 20px;
+          margin-top: 40px;
         }
 
         .radio-buttons label {
-          margin: 30px;
-          margin-right: 50px;
+          margin-left: 20px;
+          margin-right: 20px;
           margin-top: 1px;
-          margin-bottom: 50px;
+          margin-bottom: 20px;
         }
         .correlation-box {
           position: relative;
           width: 200px;
-          height: 100px;
+          height: 120px;
           margin: 10px;
           border: 1px solid #ccc;
           padding: 10px;
-          margin-top: 20px;
+          margin-top: 10px;
+          background-color:#a9d7e6;
           }
 
       .coefficient-value {
         font-weight: bold;
         font-size: 30px;
+      }
+
+      .divider {
+        width: 100%;
+        height: 80px;
+        background-color: #444;
+        margin-top: 75px;
+        margin-bottom: 40px;
       }
 
 </style>

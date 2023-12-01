@@ -2,14 +2,6 @@
   <div class="wrapper">
     <side-bar>
       <mobile-menu slot="content"></mobile-menu>
-      <sidebar-link to="/admin/correlations">
-        <i class="nc-icon nc-bank"></i>
-        <p>Correlations</p>
-      </sidebar-link>
-      <sidebar-link to="/admin/correlation-matrix">
-        <i class="nc-icon nc-grid-45"></i>
-        <p>Correlation Matrix</p>
-      </sidebar-link>
       <sidebar-link to="/admin/geographic-distribution">
         <i class="nc-icon nc-map-big"></i>
         <p>Geo Distribution</p>
@@ -18,6 +10,15 @@
         <i class="nc-icon nc-watch-time"></i>
         <p>Trends Over Time</p>
       </sidebar-link>
+      <sidebar-link to="/admin/correlations">
+        <i class="nc-icon nc-chart-bar-32"></i>
+        <p>GDP Analysis</p>
+      </sidebar-link>
+      <sidebar-link to="/admin/correlation-matrix">
+        <i class="nc-icon nc-grid-45"></i>
+        <p>Correlation Insights</p>
+      </sidebar-link>
+
       <sidebar-link to="/admin/the-data">
         <i class="nc-icon nc-notes"></i>
         <p>The Data</p>

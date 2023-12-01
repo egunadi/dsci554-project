@@ -9,7 +9,6 @@
             <div class="logo-img">
                 <img src="img/vue-logo.png" alt="">
             </div>
-          {{title}}
         </a>
       </div>
 
